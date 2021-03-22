@@ -1,0 +1,7 @@
+{
+  "db_name": "DBFileStore",
+  "host": "localhost",
+  "user": "leo",
+  "password": "chester",
+  "port": 3306
+}
