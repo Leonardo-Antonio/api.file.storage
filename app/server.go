@@ -1,8 +1,11 @@
 package app
 
 import (
+	"github.com/Leonardo-Antonio/api.file.store/model"
+	"github.com/Leonardo-Antonio/api.file.store/router"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/logger"
+	"gorm.io/gorm"
 	"log"
 	"os"
 )
@@ -23,8 +26,11 @@ func (server *app) Middlewares() {
 	server.app.Use(logger.New())
 }
 
-func (server *app) Routers() {
 
+
+func (server *app) Routers(db *gorm.DB) {
+	storageUser := model.NewUser(db)
+	router.User(storageUser, server.app)
 }
 
 func (server *app) Listening() {
